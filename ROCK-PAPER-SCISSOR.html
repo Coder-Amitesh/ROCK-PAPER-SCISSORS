@@ -9,11 +9,28 @@
 <body>
     <h1>Rock Paper Scissors</h1>
     
+    <div id="scoreboard" class="color">
+        <p ><strong>Score:</strong></p>
+        <p>Wins: <span id="wins">0</span></p>
+        <p>Losses: <span id="losses">0</span></p>
+        <p>Ties: <span id="ties">0</span></p>
+    </div>
+    
     <button onclick="playGame('rock')">Rock</button>
     <button onclick="playGame('paper')">Paper</button>
     <button onclick="playGame('scissors')">Scissors</button>
 
-    <!-- Modal -->
+    <div id="result" class="color">
+        <p id="resultMessage"></p>
+        <p id="emoji"></p>
+    </div>
+
+    <div id="history">
+        <p><strong>Recent Results:</strong></p>
+        <ul id="historyList"></ul>
+    </div>
+
+  
     <div id="resultModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -21,7 +38,7 @@
         </div>
     </div>
 
-    <!-- Link to external JavaScript file -->
+   
     <script src="index.js"></script>
 </body>
 </html>

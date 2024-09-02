@@ -4,6 +4,8 @@ const score = {
     ties: 0
 };
 
+const history = [];
+
 function playGame(playerMove) {
     const randomNumber = Math.random();
     let computerMove = '';
@@ -17,10 +19,14 @@ function playGame(playerMove) {
     }
 
     let result = '';
+    let emoji = '';
+    let backgroundColor = '';
 
     if (playerMove === computerMove) {
         result = "It's a tie!";
         score.ties += 1;
+        emoji = '🤝';
+        backgroundColor = '#f0f0f0'; 
     } else if (
         (playerMove === 'rock' && computerMove === 'scissors') ||
         (playerMove === 'paper' && computerMove === 'rock') ||
@@ -28,23 +34,52 @@ function playGame(playerMove) {
     ) {
         result = 'You win!';
         score.wins += 1;
+        emoji = '🎉';
+        backgroundColor = '#d4edda'; 
     } else {
         result = 'Computer wins!';
         score.losses += 1;
+        emoji = '😢';
+        backgroundColor = '#f8d7da'; 
     }
 
-    showModal('Computer chose: ' + computerMove + '<br>' + result +
-              '<br><br><strong>Score:</strong>' +
-              '<br>Wins: ' + score.wins +
-              '<br>Losses: ' + score.losses +
-              '<br>Ties: ' + score.ties);
+    updateScoreboard();
+    showResult(result, emoji, backgroundColor, playerMove, computerMove);
+    addToHistory(result, computerMove);
 }
 
-function showModal(message) {
-    document.getElementById('modalMessage').innerHTML = message;
-    document.getElementById('resultModal').style.display = 'block';
+function updateScoreboard() {
+    document.getElementById('wins').innerText = score.wins;
+    document.getElementById('losses').innerText = score.losses;
+    document.getElementById('ties').innerText = score.ties;
+}
+
+function showResult(result, emoji, backgroundColor, playerMove, computerMove) {
+    document.getElementById('resultMessage').innerText = result;
+    document.getElementById('emoji').innerText = emoji;
+    document.body.style.backgroundColor = backgroundColor; 
+
+    const modal = document.getElementById('resultModal');
+    document.getElementById('modalMessage').innerHTML = `
+        You chose: ${playerMove}<br>
+        Computer chose: ${computerMove}<br>
+        ${result}<br><br>
+        <strong>Score:</strong><br>
+        Wins: ${score.wins}<br>
+        Losses: ${score.losses}<br>
+        Ties: ${score.ties}
+    `;
+
+    modal.style.display = 'block'; 
 }
 
 function closeModal() {
-    document.getElementById('resultModal').style.display = 'none';
+    document.getElementById('resultModal').style.display = 'none'; 
+}
+
+function addToHistory(result, computerMove) {
+    const historyList = document.getElementById('historyList');
+    const listItem = document.createElement('li');
+    listItem.innerText = `Computer chose: ${computerMove} - ${result}`;
+    historyList.insertBefore(listItem, historyList.firstChild);
 }

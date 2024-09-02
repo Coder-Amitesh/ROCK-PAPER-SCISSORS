@@ -1,7 +1,7 @@
 
 body {
     background-color: #282c34; 
-    background-image: url('https://images.unsplash.com/photo-1521334884684-d80222895322'); 
+    background-image: url('https://images.unsplash.com/photo-1521334884684-d80222895322');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -10,9 +10,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: rgb(81, 126, 26);
+    color: rgb(21, 77, 35);
     font-family: Arial, sans-serif;
     text-align: center;
+    transition: background-color 0.5s ease;
+    .color{
+        color: #040609;
+    }
 }
 
 h1 {
@@ -39,9 +43,39 @@ button:active {
     transform: scale(0.98);
 }
 
+#scoreboard {
+    margin-bottom: 20px;
+}
+
+#result {
+    margin: 20px;
+    font-size: 1.5em;
+}
+
+#emoji {
+    font-size: 2em;
+    margin-top: 10px;
+}
+
+#history {
+    margin-top: 20px;
+}
+
+#historyList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#historyList li {
+    background: #f0f0f0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 /* Modal styling */
 .modal {
-    display: none;
+    display: none; 
     position: fixed; 
     z-index: 1; 
     left: 0;
@@ -49,13 +83,13 @@ button:active {
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0, 0, 0); 
+    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4); 
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%; 
