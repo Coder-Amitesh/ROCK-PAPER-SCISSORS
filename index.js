@@ -45,7 +45,6 @@ function playGame(playerMove) {
 
     updateScoreboard();
     showResult(result, emoji, backgroundColor, playerMove, computerMove);
-    addToHistory(result, computerMove);
 }
 
 function updateScoreboard() {
