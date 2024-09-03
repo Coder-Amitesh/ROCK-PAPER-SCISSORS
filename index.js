@@ -26,7 +26,7 @@ function playGame(playerMove) {
         result = "It's a tie!";
         score.ties += 1;
         emoji = '🤝';
-        backgroundColor = '#f0f0f0'; 
+        backgroundColor = '#a3c2a2'; 
     } else if (
         (playerMove === 'rock' && computerMove === 'scissors') ||
         (playerMove === 'paper' && computerMove === 'rock') ||
@@ -35,7 +35,7 @@ function playGame(playerMove) {
         result = 'You win!';
         score.wins += 1;
         emoji = '🎉';
-        backgroundColor = '#d4edda'; 
+        backgroundColor = '#721c24'; 
     } else {
         result = 'Computer wins!';
         score.losses += 1;
